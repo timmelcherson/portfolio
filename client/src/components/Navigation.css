@@ -1,0 +1,82 @@
+.nav-link-left,
+.nav-link-right,
+.nav-link-bottom {
+    position: absolute;
+    text-decoration: none;
+    font-family: 'Quicksand', 'Segoe UI', sans-serif;
+    color: white;
+    padding: 0.3em;
+    margin: 1em;
+    transition: all 0.3s;
+    z-index: 1;
+    opacity: 0;
+    visibility: hidden;
+    margin-top: 50vh;
+    margin-bottom: 50vh;
+}
+
+
+.nav-link-left::before,
+.nav-link-right::after {
+    position: absolute;
+	width: 0;
+    top: 50%;
+	height: 1px;
+	margin-top: -1px;
+	background: rgba(255, 255, 255, 0.6);
+	content: '';
+    z-index: -1;
+	-webkit-transition: all 0.3s, opacity 0.3s;
+	-moz-transition: all 0.3s, opacity 0.3s;
+	transition: all 0.3s, opacity 0.3s;
+	pointer-events: none;
+}
+
+.nav-link-right,
+.nav-link-right::after {
+    right: 0;
+}
+.nav-link-right:hover,
+.nav-link-right:focus {
+    margin-right: 2.5em;
+}
+.nav-link-right:hover::after,
+.nav-link-right:focus::after {
+    width: 1.5em;
+    right: -1.5em;
+}
+
+.nav-link-left,
+.nav-link-left::before {
+    left: 0;
+}
+.nav-link-left:hover,
+.nav-link-left:focus {
+    margin-left: 2.5em;
+}
+.nav-link-left:hover::before,
+.nav-link-left:focus::before {
+    width: 1.5em;
+    left: -1.5em;
+}
+
+.nav-link-left:active::before,
+.nav-link-right:active::after {
+    width: 200%;
+}
+
+
+
+
+#home-link {
+
+}
+
+#projects-dashboard-link {
+
+}
+
+.active {
+    visibility: visible;
+    opacity: 1;
+}

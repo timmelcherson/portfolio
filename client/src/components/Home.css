@@ -1,0 +1,14 @@
+#home-container {
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(to left bottom, #090909, #272c35, #375061, #417a8a, #4fa6aa);
+}
+
+#home-bg {
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(to left bottom, #090909, #272c35, #375061, #417a8a, #4fa6aa);
+    position: absolute;
+    z-index: -1;
+    
+}

@@ -1,0 +1,6 @@
+#projects-dashboard-container {
+    position: absolute;
+    height: 2000px;
+    width: 100%;
+    background-color: rgb(226, 78, 78);
+}
