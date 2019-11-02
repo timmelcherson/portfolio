@@ -16,10 +16,16 @@
     transform: scaleX()
 } */
 
-#outer-circle {
+/* #outer-circle {
     height: 500px;
     width: 500px;
     border: 1px solid rgba(255,255,255,0.6);
     border-radius: 300px;
+    margin: auto;
+} */
+
+#sine-canvas {
+    position: absolute;
+    display: flex;
     margin: auto;
 }
