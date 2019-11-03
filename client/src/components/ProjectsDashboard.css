@@ -1,7 +1,46 @@
 #projects-dashboard-container {
 	display: flex;
-	justify-content: center;
+    justify-content: center;
+    align-items: center;
 	width: 100%;
 	height: 100vh;
-	background: #111155;
+    background: #111155;
+}
+
+#projects-dashboard-container p {
+    position: absolute;
+    color: white;
+    font-size: 4em;
+    margin: 0;
+}
+
+#project-viewholder {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 75vw;
+    height: 80vh;
+}
+
+#project-side-panel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid rgba(255, 255, 255, 0.3);
+    height: 90%;
+    width: 10%;
+    margin: 5% 0;
+}
+
+#project-side-panel p {
+    transform: rotate(270deg);
+    font-size: 2em;
+    color: white;
+    font-family: 'Source Code Pro', sans-serif;
+}
+
+#project-image {
+    height: 100%;
+    width: 90%;
 }

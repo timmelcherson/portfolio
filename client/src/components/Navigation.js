@@ -21,16 +21,35 @@ class Navigation extends Component {
 		console.log('Navigation Component did mount');
 	}
 
-	toggleMenu = () => {
+	toggleMenu = event => {
+		let id = event.target.id;
 		let menu = document.getElementById('nav-link-container');
 		let arrow = document.getElementById('menu-down-arrow');
-		let links = document.querySelectorAll('.nav-link');
+		let cornerLines = document.getElementsByClassName('corner-lines');
+		let i;
 
 		if (this.state.menuExpanded) {
 			menu.style.height = '0px';
 			arrow.style.transform = 'rotate(45deg)';
 			arrow.style.marginBottom = '-40px';
-			this.animateCornerLinesExit();
+
+			if (id === 'nav-link-projects') {
+				setTimeout(() => {
+					for (i = 0; i < cornerLines.length; i++) {
+						cornerLines[i].style.margin = '10vh 10vw';
+					}
+				}, 200);
+				this.navCallback(id);
+			}
+			if (id === 'nav-link-home') {
+				for (i = 0; i < cornerLines.length; i++) {
+					cornerLines[i].style.margin = '5vh 5vw';
+				}
+				setTimeout(() => {
+					this.navCallback(id);
+				}, 200);
+			}
+
 			this.setState({
 				menuExpanded: false,
 				navLinkInProp: !this.state.navLinkInProp
@@ -46,13 +65,8 @@ class Navigation extends Component {
 		}
 	};
 
-	animateCornerLinesExit = () => {
-		let cornerLines = document.getElementsByClassName('corner-lines');
-
-		let i;
-		for (i = 0; i < cornerLines.length; i++) {
-			cornerLines[i].style.margin = '4em';
-		}
+	navCallback = clickedLinkId => {
+		this.props.navClickListener(clickedLinkId);
 	};
 
 	render() {
@@ -61,12 +75,12 @@ class Navigation extends Component {
 				<div id='nav-inner-container'>
 					<CSSTransition
 						in={this.state.navLinkInProp}
-						timeout={800}
+						timeout={200}
 						mountOnEnter
 						unmountOnExit
 						classNames='nav-link'>
 						<div
-							to='/'
+							id='nav-link-home'
 							className={'nav-link'}
 							onClick={this.toggleMenu}>
 							Home
@@ -74,12 +88,12 @@ class Navigation extends Component {
 					</CSSTransition>
 					<CSSTransition
 						in={this.state.navLinkInProp}
-						timeout={800}
+						timeout={200}
 						mountOnEnter
 						unmountOnExit
 						classNames='nav-link'>
 						<div
-							to='/projects'
+							id='nav-link-projects'
 							className={'nav-link'}
 							onClick={this.toggleMenu}>
 							Projects

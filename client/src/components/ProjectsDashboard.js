@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Fade from 'react-reveal/Fade';
 // import PropTypes from 'prop-types';
 
 import './ProjectsDashboard.css';
@@ -10,41 +11,31 @@ class ProjectsDashboard extends Component {
 	// }
 
 	componentDidMount() {
-		this.animateCornerLinesEnter();
+		// this.animateCornerLinesEnter();
 	}
 
-	animateCornerLinesEnter = () => {
-		let cornerLines = document.getElementsByClassName('corner-lines');
+	// animateCornerLinesEnter = () => {
+	// 	let cornerLines = document.getElementsByClassName('corner-lines');
 
-		let i;
-		setTimeout(() => {
-			for (i = 0; i < cornerLines.length; i++) {
-				cornerLines[i].style.margin = '12em';
-			}
-		}, 500);
-	};
-
-	
-
-	componentWillReceiveProps(nextProps) {}
-
-	componentWillUpdate(nextProps, nextState) {}
-
-    componentDidUpdate(prevProps, prevState) {}
-    
-    componentWillUnmount() {
-        setTimeout(() => {
-            console.log("Component unmounting");
-        }, 2000);
-    }
+	// 	let i;
+	// 	setTimeout(() => {
+	// 		for (i = 0; i < cornerLines.length; i++) {
+	//             cornerLines[i].style.margin = '10%';
+	// 		}
+	// 	}, 200);
+	// };
 
 	render() {
 		return (
 			<section id='projects-dashboard-container'>
-				<div id='top-left-lines' className='corner-lines' />
-				<div id='top-right-lines' className='corner-lines' />
-				<div id='bottom-left-lines' className='corner-lines' />
-				<div id='bottom-right-lines' className='corner-lines' />
+				<Fade delay={400}>
+					<div id='project-viewholder'>
+						<aside id='project-side-panel'>
+							<p>Project title goes here</p>
+						</aside>
+						<div id='project-image'></div>
+					</div>
+				</Fade>
 			</section>
 		);
 	}
