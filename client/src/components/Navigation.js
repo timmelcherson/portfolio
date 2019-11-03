@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { CSSTransition } from 'react-transition-group';
 // import PropTypes from 'prop-types';
 
 import './Navigation.css';
@@ -10,75 +11,83 @@ class Navigation extends Component {
 		console.log('Constructor Navigation Component');
 
 		this.state = {
-			links: ['home-link', 'projects-dashboard-link']
+			links: ['home-link', 'projects-dashboard-link'],
+			menuExpanded: false,
+			navLinkInProp: false
 		};
 	}
 
 	componentDidMount() {
-		this.verticallyCenterLinks();
-		this.setInitialLink();
 		console.log('Navigation Component did mount');
 	}
 
+	toggleMenu = () => {
+		let menu = document.getElementById('nav-link-container');
+		let arrow = document.getElementById('menu-down-arrow');
+		let links = document.querySelectorAll('.nav-link');
 
-	verticallyCenterLinks = () => {
-		this.state.links.forEach(linkId => {
-			console.log(document.getElementById(linkId));
-			let link = document.getElementById(linkId);
-			link.style.top =
-				window.innerHeight / 2 - link.clientHeight / 2 + 'px';
-		});
-	};
-
-	/* Highlight currently rendered component on page refresh / page load */
-	setInitialLink = () => {
-		let url = window.location.href;
-		let link;
-
-		if (url.includes('projects')) {
-			link = document.getElementById('home-link');
-			link.classList.add('active');
+		if (this.state.menuExpanded) {
+			menu.style.height = '0px';
+			arrow.style.transform = 'rotate(45deg)';
+			arrow.style.marginBottom = '-40px';
+			this.animateCornerLinesExit();
+			this.setState({
+				menuExpanded: false,
+				navLinkInProp: !this.state.navLinkInProp
+			});
 		} else {
-			link = document.getElementById('projects-dashboard-link');
-			link.classList.add('active');
+			menu.style.height = '40vh';
+			arrow.style.transform = 'rotate(225deg)';
+			arrow.style.margin = '0px';
+			this.setState({
+				menuExpanded: true,
+				navLinkInProp: !this.state.navLinkInProp
+			});
 		}
 	};
 
-	/* Highlight currently rendered page component (users current page) */
-	setActiveLink = () => {
+	animateCornerLinesExit = () => {
+		let cornerLines = document.getElementsByClassName('corner-lines');
 
-		// let id = event.target.id;
-
-		// Remove all active styling to reset the elements to default styling
-		this.state.links.forEach(function(linkId) {
-			let element = document.getElementById(linkId);
-
-			
-			if (element.className.includes('active')) {
-				element.classList.remove('active');
-			} else {
-				element.classList.add('active');
-			}
-		});
+		let i;
+		for (i = 0; i < cornerLines.length; i++) {
+			cornerLines[i].style.margin = '4em';
+		}
 	};
 
 	render() {
 		return (
 			<nav id='nav-link-container'>
-				<Link
-					id='home-link'
-					to='/'
-					className={'nav-link-right'}
-					onClick={this.setActiveLink}>
-					Home
-				</Link>
-				<Link
-					id='projects-dashboard-link'
-					to='/projects'
-					className={'nav-link-left'}
-					onClick={this.setActiveLink}>
-					Projects
-				</Link>
+				<div id='nav-inner-container'>
+					<CSSTransition
+						in={this.state.navLinkInProp}
+						timeout={800}
+						mountOnEnter
+						unmountOnExit
+						classNames='nav-link'>
+						<div
+							to='/'
+							className={'nav-link'}
+							onClick={this.toggleMenu}>
+							Home
+						</div>
+					</CSSTransition>
+					<CSSTransition
+						in={this.state.navLinkInProp}
+						timeout={800}
+						mountOnEnter
+						unmountOnExit
+						classNames='nav-link'>
+						<div
+							to='/projects'
+							className={'nav-link'}
+							onClick={this.toggleMenu}>
+							Projects
+						</div>
+					</CSSTransition>
+				</div>
+
+				<div id='menu-down-arrow' onClick={this.toggleMenu} />
 			</nav>
 		);
 	}

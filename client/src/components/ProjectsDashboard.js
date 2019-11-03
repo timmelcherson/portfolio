@@ -1,31 +1,53 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 
-import "./ProjectsDashboard.css";
+import './ProjectsDashboard.css';
 
 class ProjectsDashboard extends Component {
-    // constructor(props) {
-    //     super(props);
+	// constructor(props) {
+	//     super(props);
 
-    // }
+	// }
 
-    componentWillMount() {}
+	componentDidMount() {
+		this.animateCornerLinesEnter();
+	}
 
-    componentDidMount() {}
+	animateCornerLinesEnter = () => {
+		let cornerLines = document.getElementsByClassName('corner-lines');
 
-    componentWillReceiveProps(nextProps) {}
+		let i;
+		setTimeout(() => {
+			for (i = 0; i < cornerLines.length; i++) {
+				cornerLines[i].style.margin = '12em';
+			}
+		}, 500);
+	};
 
-    componentWillUpdate(nextProps, nextState) {}
+	
+
+	componentWillReceiveProps(nextProps) {}
+
+	componentWillUpdate(nextProps, nextState) {}
 
     componentDidUpdate(prevProps, prevState) {}
-
-    componentWillUnmount() {}
-
-    render() {
-        return (
-            <section id="projects-dashboard-container"></section>
-        );
+    
+    componentWillUnmount() {
+        setTimeout(() => {
+            console.log("Component unmounting");
+        }, 2000);
     }
+
+	render() {
+		return (
+			<section id='projects-dashboard-container'>
+				<div id='top-left-lines' className='corner-lines' />
+				<div id='top-right-lines' className='corner-lines' />
+				<div id='bottom-left-lines' className='corner-lines' />
+				<div id='bottom-right-lines' className='corner-lines' />
+			</section>
+		);
+	}
 }
 
 // ProjectsDashboard.propTypes = {};

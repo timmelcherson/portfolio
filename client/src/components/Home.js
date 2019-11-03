@@ -2,51 +2,39 @@ import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 
 import Lines from './Lines';
+import ProjectsDashboard from './ProjectsDashboard';
 import './Home.css';
-import NavigationTwo from './NavigationTwo';
 
 class Home extends Component {
-	constructor(props) {
-		super(props);
+	// constructor(props) {
+	// 	super(props);
+	// }
 
-		this.state = {
-			menuExpanded: false
-		};
-	}
+	componentDidMount() {
+        this.animateCornerLinesEnter();
+    }
 
-	componentDidMount() {}
+    animateCornerLinesEnter = () => {
+		let cornerLines = document.getElementsByClassName('corner-lines');
 
-	toggleMenu = () => {
-		let menu = document.getElementById('top-thing');
-		let arrow = document.getElementById('menu-down-arrow');
-
-		if (this.state.menuExpanded) {
-            menu.style.height = '0px';
-            arrow.style.transform = 'rotate(45deg)';
-            arrow.style.marginBottom = '-40px';
-			this.setState({
-				menuExpanded: false
-			});
-		} else {
-            menu.style.height = '40vh';
-            arrow.style.transform = 'rotate(225deg)';
-            arrow.style.marginBottom = '0px';
-			this.setState({
-				menuExpanded: true
-			});
-		}
-	};
-
+		let i;
+		setTimeout(() => {
+			for (i = 0; i < cornerLines.length; i++) {
+				cornerLines[i].style.margin = '4em';
+			}
+		}, 500);
+    };
+    
 	render() {
 		return (
 			<main id='home-container'>
-				{/* <Lines/> */}
+                {/* <Lines/> */}
+                
+                <div id="top-left-lines" className="corner-lines" />
+                <div id="top-right-lines" className="corner-lines" />
+                <div id="bottom-left-lines" className="corner-lines" />
+                <div id="bottom-right-lines" className="corner-lines" />
 
-				<div id='top-thing'>
-					<div id='menu-down-arrow' onClick={this.toggleMenu} />
-
-                    <NavigationTwo />
-				</div>
 			</main>
 		);
 	}

@@ -1,5 +1,7 @@
 #projects-dashboard-container {
-    height: 100vh;
-    width: 100%;
-    background-color: rgb(226, 78, 78);
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	height: 100vh;
+	background: #111155;
 }
