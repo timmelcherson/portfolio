@@ -4,6 +4,7 @@ import './App.css';
 import Navigation from './components/Navigation';
 import ProjectsDashboard from './components/ProjectsDashboard';
 import Home from './components/Home';
+import Footer from './components/Footer';
 
 class App extends Component {
 	constructor(props) {
@@ -13,14 +14,13 @@ class App extends Component {
 			shouldHomeRender: true,
 			shouldProjectsDashboardRender: false
 		};
-    }
-    
-    componentDidMount() {
-        console.log("mounted");
-    }
+	}
+
+	componentDidMount() {
+		console.log('mounted');
+	}
 
 	navCallback = clickedLinkId => {
-		console.log(clickedLinkId);
 		switch (clickedLinkId) {
 			case 'nav-link-home':
 				console.log('case 1');
@@ -36,6 +36,9 @@ class App extends Component {
 					shouldHomeRender: false,
 					shouldProjectsDashboardRender: true
 				});
+                break;
+                
+			default:
 				break;
 		}
 	};
@@ -54,6 +57,8 @@ class App extends Component {
 				{shouldHomeRender ? <Home /> : null}
 
 				{shouldProjectsDashboardRender ? <ProjectsDashboard /> : null}
+
+				<Footer />
 			</section>
 		);
 	}

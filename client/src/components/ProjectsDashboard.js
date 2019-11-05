@@ -25,15 +25,53 @@ class ProjectsDashboard extends Component {
 	// 	}, 200);
 	// };
 
+	onProjectImageEnter = () => {
+        console.log("enter");
+		let imageContainer = document.getElementById('project-image-container');
+		let imageOverlay = document.getElementById('project-image-overlay');
+		let image = document.getElementById('project-image');
+
+        image.style.transform = 'scale(1.1)';
+        imageOverlay.style.visibility = 'visible';
+        imageOverlay.style.opacity = '1';
+	};
+
+	onProjectImageLeave = () => {
+        console.log("leave");
+        let imageContainer = document.getElementById('project-image-container');
+		let imageOverlay = document.getElementById('project-image-overlay');
+		let image = document.getElementById('project-image');
+
+        image.style.transform = 'scale(1)';
+        imageOverlay.style.visibility = 'hidden';
+        imageOverlay.style.opacity = '0';
+    };
+
 	render() {
 		return (
 			<section id='projects-dashboard-container'>
-				<Fade delay={400}>
+				<Fade delay={600}>
 					<div id='project-viewholder'>
 						<aside id='project-side-panel'>
-							<p>Project title goes here</p>
+							<p>Orkney Folklore Trails Orkney Folklore Trails</p>
 						</aside>
-						<div id='project-image'></div>
+						<div
+							id='project-image-container'
+							onMouseEnter={this.onProjectImageEnter}
+							onMouseLeave={this.onProjectImageLeave}>
+							<div id='project-image-overlay'>
+								<h3>Android App</h3>
+								<p>
+									This is an app I developed together with
+									people from RGU and Orkneyology.com.
+								</p>
+							</div>
+							<img
+								id='project-image'
+								src='images/orkney_icon_1.png'
+								alt=''
+							/>
+						</div>
 					</div>
 				</Fade>
 			</section>

@@ -1,74 +1,76 @@
 #app-main-container {
-  width: 100%;
-  height: 100vh;
+	width: 100%;
+	height: 100vh;
+	color: white;
 }
 
-
 .corner-lines {
-  position: absolute;
-  width: 5vw;
-  height: 5vh;
-  margin: 5vh 5vw;
-  transition: all .3s;
-  z-index: 5;
+	position: absolute;
+	width: 5vw;
+	height: 8vh;
+	margin: 8vh 8vw;
+	transition: all 0.5s;
+}
+
+.extend-corner-lines {
+	width: 45vw;
+	height: 45vh;
 }
 
 #top-left-lines {
-  top: 0;
-  left: 0;
+	top: 0;
+	left: 0;
 }
 #top-right-lines {
-  top: 0;
-  right: 0;
+	top: 0;
+	right: 0;
 }
 #bottom-left-lines {
-  transform: rotate(180deg);
-  bottom: 0;
-  left: 0;
+	/* transform: rotate(180deg); */
+	bottom: 0;
+	left: 0;
 }
 #bottom-right-lines {
-  transform: rotate(180deg);
-  bottom: 0;
-  right: 0;
+	/* transform: rotate(180deg); */
+	bottom: 0;
+	right: 0;
 }
 
-.corner-lines::before, .corner-lines::after {
-  position: absolute;
-  content: '';
-  width: 100%;
-  height: 2px;
-  background: rgba(255, 255, 255, 1);
-  transition: all .5s;
+.corner-lines::before {
+	position: absolute;
+	content: '';
+	width: 100%;
+	height: 2px;
+	background: rgba(255, 255, 255, 1);
+	transition: all 0.5s;
+	z-index: 4;
 }
 
-#top-left-lines::before {
-  transform: rotate(90deg);
-  top: 2vh;
-}
-#top-left-lines::after {
-  left: 1vw;
+.corner-lines::after {
+	position: absolute;
+	content: '';
+	width: 2px;
+	height: 100%;
+	background: rgba(255, 255, 255, 1);
+	transition: all 0.5s;
+	z-index: 4;
 }
 
+#top-left-lines::before,
 #top-right-lines::before {
-  transform: rotate(90deg);
-  top: 2vh;
+	top: 1vh;
 }
-#top-right-lines::after {
-  right: 1vw;
-}
-
-#bottom-left-lines::before {
-  right: 1vw;
-}
+#top-left-lines::after,
 #bottom-left-lines::after {
-  transform: rotate(90deg);
-  top: 2vh;
+	left: 1vw;
 }
 
-#bottom-right-lines::before {
-  left: 1vw;
-}
+#top-right-lines::after,
 #bottom-right-lines::after {
-  transform: rotate(90deg);
-  top: 2vh;
+	right: 1vw;
+}
+
+#bottom-left-lines::before,
+#bottom-right-lines::before {
+	bottom: 1vh;
 }

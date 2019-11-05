@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 // import PropTypes from 'prop-types';
 
@@ -13,7 +12,8 @@ class Navigation extends Component {
 		this.state = {
 			links: ['home-link', 'projects-dashboard-link'],
 			menuExpanded: false,
-			navLinkInProp: false
+			navLinkInProp: false,
+			activeLink: 'nav-link-home'
 		};
 	}
 
@@ -23,31 +23,26 @@ class Navigation extends Component {
 
 	toggleMenu = event => {
 		let id = event.target.id;
+		if (id === 'nav-link-projects' || id === 'nav-link-home') {
+			this.setState({
+				activeLink: id
+			});
+		}
 		let menu = document.getElementById('nav-link-container');
 		let arrow = document.getElementById('menu-down-arrow');
-		let cornerLines = document.getElementsByClassName('corner-lines');
-		let i;
-
+		console.log('id clicked: ' + id);
+		console.log(this.state.activeLink);
 		if (this.state.menuExpanded) {
 			menu.style.height = '0px';
-			arrow.style.transform = 'rotate(45deg)';
-			arrow.style.marginBottom = '-40px';
+			arrow.style.transform = 'rotate(-135deg)';
+			arrow.style.bottom = '-40px';
 
-			if (id === 'nav-link-projects') {
-				setTimeout(() => {
-					for (i = 0; i < cornerLines.length; i++) {
-						cornerLines[i].style.margin = '10vh 10vw';
-					}
-				}, 200);
-				this.navCallback(id);
-			}
-			if (id === 'nav-link-home') {
-				for (i = 0; i < cornerLines.length; i++) {
-					cornerLines[i].style.margin = '5vh 5vw';
-				}
-				setTimeout(() => {
-					this.navCallback(id);
-				}, 200);
+			if (id === 'nav-link-projects' || id === 'nav-link-home') {
+				this.setState({
+					activeLink: id
+				});
+
+				this.animateCornerLines(id);
 			}
 
 			this.setState({
@@ -56,12 +51,59 @@ class Navigation extends Component {
 			});
 		} else {
 			menu.style.height = '40vh';
-			arrow.style.transform = 'rotate(225deg)';
-			arrow.style.margin = '0px';
+			arrow.style.transform = 'rotate(45deg)';
+			arrow.style.bottom = '0px';
 			this.setState({
 				menuExpanded: true,
 				navLinkInProp: !this.state.navLinkInProp
 			});
+		}
+	};
+
+	animateCornerLines = id => {
+		let cornerLines = document.getElementsByClassName('corner-lines');
+		let projectSidepanel = document.getElementById('project-side-panel');
+		let projectImageContainer = document.getElementById(
+			'project-image-container'
+		);
+		let i;
+
+		switch (id) {
+			case 'nav-link-home':
+				if (this.state.activeLink === 'nav-link-projects') {
+					projectSidepanel.style.opacity = '0';
+					projectImageContainer.style.opacity = '0';
+				}
+				setTimeout(() => {
+					for (i = 0; i < cornerLines.length; i++) {
+						cornerLines[i].style.margin = '8vh 8vw';
+					}
+				}, 200);
+
+				setTimeout(() => {
+					for (i = 0; i < cornerLines.length; i++) {
+						cornerLines[i].classList.remove('extend-corner-lines');
+					}
+				}, 200);
+				setTimeout(() => {
+					this.navCallback(id);
+				}, 400);
+				break;
+
+			case 'nav-link-projects':
+				for (i = 0; i < cornerLines.length; i++) {
+					cornerLines[i].style.margin = '10vh 15vw';
+				}
+				setTimeout(() => {
+					for (i = 0; i < cornerLines.length; i++) {
+						cornerLines[i].classList.add('extend-corner-lines');
+					}
+				}, 400);
+				this.navCallback(id);
+				break;
+
+			default:
+				break;
 		}
 	};
 

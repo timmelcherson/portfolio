@@ -1,46 +1,104 @@
 #projects-dashboard-container {
 	display: flex;
-    justify-content: center;
-    align-items: center;
+	justify-content: center;
+	align-items: center;
 	width: 100%;
 	height: 100vh;
-    background: #111155;
-}
-
-#projects-dashboard-container p {
-    position: absolute;
-    color: white;
-    font-size: 4em;
-    margin: 0;
+    background: #0A0A0A;
+    z-index: 3;
 }
 
 #project-viewholder {
-    position: absolute;
-    display: flex;
-    justify-content: center;
+	position: absolute;
+	display: flex;
+	justify-content: center;
     align-items: center;
-    width: 75vw;
-    height: 80vh;
+    overflow: hidden;
+	width: 68vw;
+	height: 78vh;
+	opacity: 1;
+	transition: all 0.3s;
+    z-index: 3;
 }
 
 #project-side-panel {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    border-right: 1px solid rgba(255, 255, 255, 0.3);
-    height: 90%;
-    width: 10%;
+	border-right: 2px solid rgba(255, 255, 255, 0.3);
+	height: 90%;
+	width: 10vw;
     margin: 5% 0;
+    transition: all 0.2s;
+    z-index: 3;
 }
 
 #project-side-panel p {
-    transform: rotate(270deg);
-    font-size: 2em;
-    color: white;
-    font-family: 'Source Code Pro', sans-serif;
+	position: absolute;
+    left: 0;
+    bottom: 0;
+    margin: 1em;
+    width: 60vh;
+	/* Border is the new background */
+	background: none;
+    z-index: 3;
+    overflow: hidden;
+	/* Rotate from top left corner (not default) */
+	transform-origin: 0 0;
+	font-size: 2em;
+	transform: rotate(270deg);
+	color: white;
+	font-family: 'Source Code Pro', sans-serif;
+}
+
+#project-image-container {
+	display: flex;
+    overflow: hidden;
+	height: 100%;
+	width: 58vw;
+    transition: all 0.2s;
+    z-index: 2;
 }
 
 #project-image {
-    height: 100%;
-    width: 90%;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+	opacity: 0.8;
+    z-index: 2;
+    transition: all 0.3s;
+}
+
+#project-image-overlay {
+    position: absolute;
+    display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-flow: column;
+	background: rgba(0, 0, 0, 0.5);
+	z-index: 5;
+	height: 100%;
+	width: 58vw;
+    visibility: hidden;
+    opacity: 0;
+	transition: all 0.3;
+}
+
+#project-image-overlay h3 {
+	position: relative;
+	font-family: 'Source Code Pro', sans-serif;
+	color: white;
+	font-size: 2em;
+    z-index: 5;
+	transition: all 0.3;
+}
+
+#project-image-overlay p {
+	position: relative;
+	font-family: 'Source Code Pro', sans-serif;
+    color: white;
+    width: 100%;
+    max-width: 52vw;
+	font-size: 2em;
+	margin: 1em 3vw;
+    z-index: 5;
+	transition: all 0.3;
 }
