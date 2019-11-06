@@ -8,6 +8,27 @@
     z-index: 3;
 }
 
+#project-page-title {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 100vh;
+    left: 0;
+}
+#project-page-title p{
+    font-size: 3em;
+	color: white;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    letter-spacing: 8vh;
+    transform: rotate(270deg);
+    -webkit-transform: rotate(270deg);
+    -moz-transform: rotate(270deg);
+    margin: 0;
+    opacity: 0.2;
+}
+
 #project-viewholder {
 	position: absolute;
 	display: flex;
@@ -23,10 +44,10 @@
 
 #project-side-panel {
     display: flex;
-	border-right: 2px solid rgba(255, 255, 255, 0.3);
+	border-right: 2px solid rgba(255, 255, 255, 0.4);
 	height: 90%;
 	width: 10vw;
-    margin: 5% 0;
+    margin: 5% 1px 5% 0;
     transition: all 0.2s;
     z-index: 3;
 }
@@ -35,22 +56,25 @@
 	position: absolute;
     left: 0;
     bottom: 0;
-    margin: 1em;
     width: 60vh;
 	/* Border is the new background */
 	background: none;
     z-index: 3;
     overflow: hidden;
 	/* Rotate from top left corner (not default) */
-	transform-origin: 0 0;
-	font-size: 2em;
+    transform-origin: 0 0;
+    margin-left: 1em;
+    margin-bottom: 1em;
+	font-size: 1.2em;
 	transform: rotate(270deg);
 	color: white;
 	font-family: 'Source Code Pro', sans-serif;
 }
 
 #project-image-container {
-	display: flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     overflow: hidden;
 	height: 100%;
 	width: 58vw;
@@ -60,11 +84,10 @@
 
 #project-image {
     position: relative;
-    overflow: hidden;
-    width: 100%;
-	opacity: 0.8;
+    opacity: 0.8;
+    max-width: 102%;
     z-index: 2;
-    transition: all 0.3s;
+    transition: all 0.5s;
 }
 
 #project-image-overlay {
@@ -77,9 +100,7 @@
 	z-index: 5;
 	height: 100%;
 	width: 58vw;
-    visibility: hidden;
     opacity: 0;
-	transition: all 0.3;
 }
 
 #project-image-overlay h3 {
@@ -88,7 +109,6 @@
 	color: white;
 	font-size: 2em;
     z-index: 5;
-	transition: all 0.3;
 }
 
 #project-image-overlay p {
@@ -100,5 +120,4 @@
 	font-size: 2em;
 	margin: 1em 3vw;
     z-index: 5;
-	transition: all 0.3;
 }

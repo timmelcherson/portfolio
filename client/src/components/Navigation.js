@@ -98,7 +98,7 @@ class Navigation extends Component {
 					for (i = 0; i < cornerLines.length; i++) {
 						cornerLines[i].classList.add('extend-corner-lines');
 					}
-				}, 400);
+				}, 100);
 				this.navCallback(id);
 				break;
 

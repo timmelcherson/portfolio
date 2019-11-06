@@ -74,3 +74,13 @@
 #bottom-right-lines::before {
 	bottom: 1vh;
 }
+
+*::selection {
+    color: #000;
+    background: #FFF;
+}
+
+*::-moz-selection {
+    color: #000;
+    background: #FFF;
+}

@@ -10,7 +10,8 @@ class Home extends Component {
 		super(props);
 
 		this.state = {
-			isPresentationHovered: false
+			isPresentationHovered: false,
+			showElements: true
 		};
 	}
 
@@ -33,7 +34,7 @@ class Home extends Component {
 	render() {
 		return (
 			<main id='home-container'>
-				<Fade delay={150}>
+				<Fade delay={150} bottom opposite distance={'1em'}>
 					<div id='home-presentation'>
 						<p>This is </p>
 						<p
@@ -45,6 +46,11 @@ class Home extends Component {
 					</div>
 				</Fade>
 				<Fade delay={300}>
+					<div id='home-page-title'>
+						<p>Home</p>
+					</div>
+				</Fade>
+				<Fade delay={450} bottom opposite distance={'1em'}>
 					<div id='home-coordinates-container'>
 						<p>I live here</p>
 						<p id='home-latitude'>59° 51' 31.75" N</p>
