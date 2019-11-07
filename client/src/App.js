@@ -16,9 +16,9 @@ class App extends Component {
 		};
 	}
 
-	componentDidMount() {
-		console.log('mounted');
-	}
+	// componentDidMount() {
+	// 	console.log('mounted');
+	// }
 
 	navCallback = clickedLinkId => {
 		switch (clickedLinkId) {

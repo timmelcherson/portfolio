@@ -3,8 +3,8 @@
     display: flex;
     align-items: center;
 	top: 0;
-	width: 50vw;
-	height: 50vh;
+	width: 40vw;
+	height: 30vh;
 	margin: 25vh 25vw;
 	background: rgba(35, 203, 167, 0.7);
     border-radius: 1em;
@@ -27,8 +27,9 @@
 }
 
 #popup-container-image {
-    height: 90%;
-    margin-left: 3em;
+    height: 100%;
+    border-top-left-radius: 1em;
+    border-bottom-left-radius: 1em;
     left: 0;
     opacity: 1;
 }

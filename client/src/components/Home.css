@@ -10,6 +10,7 @@
     position: absolute;
     top: 11vh;
     left: 11vw;
+    z-index: 2;
 }
 
 #home-presentation p {
@@ -51,6 +52,7 @@
     height: 100%;
     width: 100vh;
     left: 0;
+    z-index: 1;
 }
 #home-page-title p{
     font-size: 3em;
@@ -72,6 +74,7 @@
     font-size: 3em;
     bottom: 11vh;
     left: 11vw;
+    z-index: 2;
 }
 
 #home-coordinates-container p {
