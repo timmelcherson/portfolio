@@ -31,6 +31,7 @@ class Navigation extends Component {
 		let arrow = document.getElementById('menu-down-arrow');
 		console.log('id clicked: ' + id);
 		console.log(this.state.activeLink);
+
 		if (this.state.menuExpanded) {
 			menu.style.height = '0px';
 			arrow.style.transform = 'rotate(-135deg)';
@@ -90,8 +91,14 @@ class Navigation extends Component {
 				break;
 
 			case 'nav-link-projects':
-				for (i = 0; i < cornerLines.length; i++) {
-					cornerLines[i].style.margin = '10vh 15vw';
+				if (window.matchMedia('(max-width: 600px)').matches) {
+					for (i = 0; i < cornerLines.length; i++) {
+						cornerLines[i].style.margin = '25vh 15vw';
+					}
+				} else if (window.matchMedia('(min-width: 1024px)').matches) {
+					for (i = 0; i < cornerLines.length; i++) {
+						cornerLines[i].style.margin = '10vh 15vw';
+					}
 				}
 				setTimeout(() => {
 					for (i = 0; i < cornerLines.length; i++) {

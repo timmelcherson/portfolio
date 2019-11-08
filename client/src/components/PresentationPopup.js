@@ -8,9 +8,16 @@ class PresentationPopup extends Component {
 	//     super(props);
 	// }
 
+	closePopupWindow = () => {
+		let popup = document.getElementById("popup-container");
+		popup.style.visibility = 'hidden';
+		popup.style.opacity = '0';
+	}
+
 	render() {
 		return (
 			<div id='popup-container'>
+				<button id="popup-close-btn" onClick={this.closePopupWindow} />
 				<img id='popup-container-image' alt="" src='images/profpic_bw.jpg' />
 				<div id='popup-container-info'>
 					<p>Name: Tim</p>

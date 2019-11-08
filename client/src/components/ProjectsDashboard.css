@@ -103,7 +103,7 @@ button {
     display: none;
 	top: 2em;
     transform: rotate(45deg);
-    animation: fadeIn 0.3s;
+    animation: fadeIn 0.5s;
 }
 
 #aside-arrow-up:hover {
@@ -115,7 +115,7 @@ button {
     display: inline-block;
     transform: rotate(-135deg);
     bottom: 2em;
-    animation: fadeIn 0.3s;
+    animation: fadeIn 0.5s;
 }
 
 #aside-arrow-down:hover {
@@ -321,3 +321,48 @@ button {
     0%   { opacity: 1; }
     100% { opacity: 0; }
   }
+
+  @media only screen and (max-width: 600px) {
+	#project-viewholder  {
+        flex-flow: column;
+        height: 60vh;
+    }
+
+    #project-side-panel {
+        top: 5vh;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.4);
+        border-right: none;
+        height: 10vh;
+        width: 90%;
+    }
+    
+    #project-side-panel p {
+        transform: rotate(0);
+        -webkit-transform: rotate(0);
+        -moz-transform: rotate(0);
+    }
+
+    #project-image-container {
+        position: relative;
+        height: 38vh;
+        width: 100%;
+        margin-bottom: 2vh;
+    }
+
+    #project-image-overlay {
+        height: 38vh;
+        width: 100%;
+        bottom: 0;
+    }
+
+    #aside-arrow-down {
+        bottom: 2vh;
+    }
+
+    #aside-arrow-up {
+        top: 2vh;
+    }
+    #project-overlay-scroll-down-container {
+        display: none;
+    }
+}

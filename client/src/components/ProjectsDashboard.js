@@ -53,17 +53,6 @@ class ProjectsDashboard extends Component {
 			});
 	};
 
-	// animateCornerLinesEnter = () => {
-	// 	let cornerLines = document.getElementsByClassName('corner-lines');
-
-	// 	let i;
-	// 	setTimeout(() => {
-	// 		for (i = 0; i < cornerLines.length; i++) {
-	//             cornerLines[i].style.margin = '10%';
-	// 		}
-	// 	}, 200);
-	// };
-
 	onProjectImageEnter = () => {
 		// console.log('enter');
 		// let imageContainer = document.getElementById('project-image-container');
@@ -143,23 +132,18 @@ class ProjectsDashboard extends Component {
 	};
 
 	projectWheelScroll = event => {
-		console.log(this.state.currentProjectIndex);
-
-		if (event.deltaY < 0) {
-            console.log("UP");
-			if (
-				this.state.currentProjectIndex - 1 != 0 ||
-				this.state.currentProjectIndex != 0
-			) {
-				this.projectScrollUp();
-			}
-		} else if (event.deltaY > 0) {
-            console.log("DOWn");
-			if (
-				this.state.currentProjectIndex + 1 !==
-				this.state.projects.length
-			) {
-				this.projectScrollDown();
+		if (window.matchMedia('(min-width: 1024px)').matches) {
+			if (event.deltaY < 0) {
+				if (this.state.currentProjectIndex !== 0) {
+					this.projectScrollUp();
+				}
+			} else if (event.deltaY > 0) {
+				if (
+					this.state.currentProjectIndex + 1 !==
+					this.state.projects.length
+				) {
+					this.projectScrollDown();
+				}
 			}
 		}
 	};
