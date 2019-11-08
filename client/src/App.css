@@ -1,4 +1,7 @@
 #app-main-container {
+    display: grid;
+    grid-template-columns: repeat(12, 8.33%);
+    grid-template-rows: repeat(12, 8.33%);
 	width: 100%;
 	height: 100vh;
 	color: white;
@@ -6,10 +9,7 @@
 }
 
 .corner-lines {
-	position: absolute;
-	width: 5vw;
-	height: 8vh;
-	margin: 8vh 8vw;
+	position: relative;
 	transition: all 0.5s;
 }
 
@@ -19,22 +19,23 @@
 }
 
 #top-left-lines {
-	top: 0;
-	left: 0;
+    grid-column-start: 2;
+    grid-row-start: 2;
 }
+
 #top-right-lines {
-	top: 0;
-	right: 0;
+	grid-column-start: 11;
+    grid-row-start: 2;
 }
 #bottom-left-lines {
 	/* transform: rotate(180deg); */
-	bottom: 0;
-	left: 0;
+	grid-column-start: 2;
+    grid-row-start: 11;
 }
 #bottom-right-lines {
 	/* transform: rotate(180deg); */
-	bottom: 0;
-	right: 0;
+	grid-column-start: 11;
+    grid-row-start: 11;
 }
 
 .corner-lines::before {

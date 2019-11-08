@@ -93,9 +93,15 @@ class Navigation extends Component {
 			case 'nav-link-projects':
 				if (window.matchMedia('(max-width: 600px)').matches) {
 					for (i = 0; i < cornerLines.length; i++) {
-						cornerLines[i].style.margin = '25vh 15vw';
+						cornerLines[i].style.margin = '25vh 10vw';
 					}
-				} else if (window.matchMedia('(min-width: 1024px)').matches) {
+				} 
+				else if (window.matchMedia('(min-width: 601px) and (max-width: 1024px)').matches) {
+					for (i = 0; i < cornerLines.length; i++) {
+						cornerLines[i].style.margin = '25vh 10vw';
+					}
+				}
+				else if (window.matchMedia('(min-width: 1024px)').matches) {
 					for (i = 0; i < cornerLines.length; i++) {
 						cornerLines[i].style.margin = '10vh 15vw';
 					}

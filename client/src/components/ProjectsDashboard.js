@@ -75,12 +75,8 @@ class ProjectsDashboard extends Component {
 		this.setState({
 			showOverlay: true
 		});
-	};
-
-	showProjects = () => {
-		console.log(this.state.projects);
-	};
-
+    };
+    
 	projectScrollUp = () => {
 		let projects = this.state.projects;
 		let newIndex = this.state.currentProjectIndex - 1;
@@ -160,7 +156,6 @@ class ProjectsDashboard extends Component {
 		} = this.state;
 		return (
 			<section id='projects-dashboard-container'>
-				<button onClick={this.showProjects}>CLICK</button>
 				<Fade delay={300}>
 					<div id='project-page-title'>
 						<p>Projects</p>
