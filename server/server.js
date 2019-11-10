@@ -20,7 +20,7 @@ app.use('/api/projects', projects);
 
 // DB Config
 // Atlas URI
-const db = require('./config/keys').mongoURILocal;
+const db = require('./config/keys').mongoURIAtlas;
 
 // Connect to Mongo
 mongoose
@@ -53,4 +53,4 @@ if (process.env.NODE_ENV === 'production') {
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);
 
-console.log('App is listening on port ' + PORT);
+// console.log('App is listening on port ' + PORT);
