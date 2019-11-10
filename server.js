@@ -31,11 +31,11 @@ mongoose
 // mongoose.set('useFindAndModify', false);
 
 // Set static folder
-app.use(express.static(path.join(__dirname, '../client/public')));
+app.use(express.static(path.join(__dirname, 'client/public')));
 
 // Any request that doesn't match the above should be redirected to this
 app.get('*', (req, res) => {
-	res.sendFile(path.resolve(__dirname, '../client', 'public', 'index.html'));
+	res.sendFile(path.resolve(__dirname, 'client', 'public', 'index.html'));
 });
 
 // Serve static assets if in production (This is for Heroku deployment)
