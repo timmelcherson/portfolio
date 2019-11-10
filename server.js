@@ -12,7 +12,7 @@ const app = express();
 
 // Bodyparser Middleware
 app.use(bodyParser.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 app.use('/uploads/', express.static('uploads'));
 
 // Custom API routes
