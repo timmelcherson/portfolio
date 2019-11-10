@@ -30,7 +30,7 @@ app.get('*', (req, res) => {
 if (process.env.NODE_ENV === 'production') {
 	// DB Config
 	// Atlas URI
-	const db = process.env.DB_CONFIG_KEY;
+	const db = process.env.MONGODB_URI;
 
 	// Set static folder
 	app.use(express.static('client/build'));
