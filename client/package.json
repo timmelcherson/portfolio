@@ -31,5 +31,14 @@
       "last 1 safari version"
     ]
   },
+  "cacheDirectories": [
+    "node_modules",
+    "client/node_modules"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/timmelcherson/portfolio.git"
+  },
+
   "proxy": "http://localhost:5000"
 }
