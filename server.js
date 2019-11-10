@@ -31,7 +31,7 @@ mongoose
 // mongoose.set('useFindAndModify', false);
 
 // Set static folder
-app.use(express.static(path.join(__dirname, 'client/public')));
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 // Any request that doesn't match the above should be redirected to this
 app.get('*', (req, res) => {
