@@ -11,11 +11,11 @@ class ProjectsDashboard extends Component {
 
 		this.state = {
 			showOverlay: false,
+			projectTitle: '',
+			projectDescription: '',
+			projectSidepanelText: '',
 			projectUrl: '',
 			projectUrlText: '',
-			projectDescription: '',
-			projectTitle: '',
-			projectSidepanelText: '',
 			projectImage: '',
 			projects: [],
 			currentProjectIndex: 0
@@ -33,17 +33,17 @@ class ProjectsDashboard extends Component {
 				let projects = [];
 
 				data.map(entity => {
-					projects.push(entity);
+					projects.unshift(entity);
 					return null;
 				});
 
 				this.setState({
 					projects: projects,
+					projectTitle: projects[0].projectTitle,
+					projectDescription: projects[0].projectDescription,
+					projectSidepanelText: projects[0].projectSidepanelText,
 					projectUrl: encodeURI(projects[0].projectUrl),
 					projectUrlText: projects[0].projectUrlText,
-					projectDescription: projects[0].projectDescription,
-					projectTitle: projects[0].projectTitle,
-					projectSidepanelText: projects[0].projectSidepanelText,
 					projectImg: projects[0].projectImg,
 					currentProjectIndex: 0
 				});
@@ -55,9 +55,6 @@ class ProjectsDashboard extends Component {
 	};
 
 	onProjectImageEnter = () => {
-		// console.log('enter');
-		// let imageContainer = document.getElementById('project-image-container');
-		// let imageOverlay = document.getElementById('project-image-overlay');
 		let image = document.getElementById('project-image');
 
 		image.style.transform = 'scale(1.1)';
@@ -67,9 +64,6 @@ class ProjectsDashboard extends Component {
 	};
 
 	onProjectImageLeave = () => {
-		// console.log('leave');
-		// let imageContainer = document.getElementById('project-image-container');
-		// let imageOverlay = document.getElementById('project-image-overlay');
 		let image = document.getElementById('project-image');
 
 		image.style.transform = 'scale(1)';

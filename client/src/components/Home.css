@@ -9,7 +9,7 @@
 
 #home-presentation {
     grid-column: 3 / span 5;
-    grid-row: 3 / 3;
+    grid-row: 4 / 4;
     z-index: 2;
     display: flex;
 }
@@ -74,7 +74,6 @@
 #home-coordinates-container {
 	display: flex;
 	flex-flow: column;
-	font-size: 3em;
     grid-column: 3 / span 5;
     grid-row: 9 / span 3;
 	z-index: 2;
@@ -83,6 +82,8 @@
 
 #home-coordinates-container p {
 	margin: 0;
+	font-family: 'Space Mono', sans-serif;
+	font-size: 3em;
 }
 
 @media only screen and (max-width: 1024px) {

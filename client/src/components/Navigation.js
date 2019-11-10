@@ -16,10 +16,6 @@ class Navigation extends Component {
 		};
 	}
 
-	// componentDidMount() {
-	// 	console.log('Navigation Component did mount');
-	// }
-
 	toggleMenu = event => {
 		let id = event.target.id;
 		if (id === 'nav-link-projects' || id === 'nav-link-home') {

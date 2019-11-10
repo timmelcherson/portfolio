@@ -4,9 +4,6 @@ import React, { Component } from 'react';
 import './PresentationPopup.css';
 
 class PresentationPopup extends Component {
-	// constructor(props) {
-	//     super(props);
-	// }
 
 	closePopupWindow = () => {
 		let popup = document.getElementById('popup-container');
@@ -23,8 +20,7 @@ class PresentationPopup extends Component {
 					src='images/profpic_bw.jpg'
 				/>
 				<div id='popup-container-info'>
-					<p>Name: Tim</p>
-					<p>Age: 25</p>
+					<p>Hi there! I'm Tim.</p>
 				</div>
 				<div id='popup-close-btn' onClick={this.closePopupWindow} />
 			</div>

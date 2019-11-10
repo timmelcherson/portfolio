@@ -164,7 +164,7 @@ button {
 	width: 90%;
 	font-family: 'Source Code Pro', sans-serif;
 	color: white;
-	font-size: 1.4em;
+	font-size: 1.2em;
 	z-index: 5;
 	margin: 1em 0;
 }
@@ -174,7 +174,7 @@ button {
 	width: 90%;
 	font-family: 'Source Code Pro', sans-serif;
 	color: white;
-	font-size: 2em;
+	font-size: 1.6em;
 	margin: 1em 0;
 	z-index: 5;
 }
@@ -306,5 +306,8 @@ button {
 @media only screen and (min-width: 601px) and (max-width: 1024px) {
 	#project-viewholder {
 		grid-row: 4 / 10;
+	}
+	#project-overlay-scroll-down-container {
+		display: none;
 	}
 }

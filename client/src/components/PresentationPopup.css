@@ -1,14 +1,17 @@
 #popup-container {
     display: flex;
-    grid-column: 2 / 12;
-    grid-row: 4 / 9;
+    position: absolute;
+    width: 30vw;
+    height: 30vh;
+    top: 35vh;
+    left: 35vw;
 	background: rgba(35, 203, 167, 0.7);
-    border-radius: 5%;
+    border-radius: 1em;
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s;
     z-index: 100;
-    margin: 0;
+    align-self: center;
 }
 
 #popup-container-info {
@@ -32,6 +35,7 @@
 }
 
 #popup-close-btn {
+    display: none;
     position: relative;
     height: 30px;
     width: 30px;
@@ -60,12 +64,16 @@
 @media only screen and (max-width: 600px) {
     
     #popup-container-image {
-        width: 60%;
-        border-radius: 5%;
+        width: 70%;
+        border-radius: 1em;
     }
 
     #popup-container-info {
         width: 40%;
+    }
+
+    #popup-close-btn {
+        display: block;
     }
     
 }
