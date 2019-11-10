@@ -61,7 +61,13 @@
     transform: translateY(9px) rotate(-45deg);
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1024px) {
+
+    #popup-container {
+        width: 80vw;
+        top: 35vh;
+        left: 10vw;
+    }
     
     #popup-container-image {
         width: 70%;
@@ -77,3 +83,5 @@
     }
     
 }
+
+

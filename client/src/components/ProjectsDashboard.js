@@ -54,24 +54,30 @@ class ProjectsDashboard extends Component {
 			});
 	};
 
-	onProjectImageEnter = () => {
+	showOverlay = () => {
 		let image = document.getElementById('project-image');
-
 		image.style.transform = 'scale(1.1)';
 		this.setState({
 			showOverlay: true
 		});
 	};
 
-	onProjectImageLeave = () => {
+	hideOverlay = () => {
 		let image = document.getElementById('project-image');
-
 		image.style.transform = 'scale(1)';
 		this.setState({
 			showOverlay: false
 		});
-    };
-    
+	};
+
+	onProjectImageEnter = () => {
+		this.showOverlay();
+	};
+
+	onProjectImageLeave = () => {
+		this.hideOverlay();
+	};
+
 	projectScrollUp = () => {
 		let projects = this.state.projects;
 		let newIndex = this.state.currentProjectIndex - 1;
@@ -87,6 +93,7 @@ class ProjectsDashboard extends Component {
 		}
 
 		this.setState({
+			showOverlay: false,
 			projectUrl: encodeURI(projects[newIndex].projectUrl),
 			projectUrlText: projects[newIndex].projectUrlText,
 			projectDescription: projects[newIndex].projectDescription,
@@ -112,6 +119,7 @@ class ProjectsDashboard extends Component {
 		}
 
 		this.setState({
+			showOverlay: false,
 			projectUrl: encodeURI(projects[newIndex].projectUrl),
 			projectUrlText: projects[newIndex].projectUrlText,
 			projectDescription: projects[newIndex].projectDescription,
@@ -141,6 +149,7 @@ class ProjectsDashboard extends Component {
 
 	render() {
 		const {
+			showOverlay,
 			projectSidepanelText,
 			projectTitle,
 			projectDescription,
@@ -175,8 +184,20 @@ class ProjectsDashboard extends Component {
 							id='project-image-container'
 							onMouseEnter={this.onProjectImageEnter}
 							onMouseLeave={this.onProjectImageLeave}
-							onWheel={this.projectWheelScroll}
-                            >
+							onWheel={this.projectWheelScroll}>
+							{showOverlay ? (
+								<div
+									id='project-overlay-less-info'
+									onClick={this.hideOverlay}>
+									Less info
+								</div>
+							) : (
+								<div
+									id='project-overlay-more-info'
+									onClick={this.showOverlay}>
+									More info
+								</div>
+							)}
 							<Fade
 								duration={300}
 								opposite
@@ -189,12 +210,12 @@ class ProjectsDashboard extends Component {
 									</a>
 								</div>
 							</Fade>
-                            <div id='project-overlay-scroll-down-container'>
-									<div id='project-overlay-mouse'>
-										<div id='project-overlay-scrollwheel' />
-									</div>
-									<i id='project-overlay-scroll-down-arrow' />
+							<div id='project-overlay-scroll-down-container'>
+								<div id='project-overlay-mouse'>
+									<div id='project-overlay-scrollwheel' />
 								</div>
+								<i id='project-overlay-scroll-down-arrow' />
+							</div>
 							<img id='project-image' src={projectImg} alt='' />
 						</div>
 					</div>

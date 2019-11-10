@@ -17,7 +17,7 @@ class Footer extends Component {
 				<div id='footer-contact-icons-container'>
 					<a
 						id='contact-icon-gmail'
-						href='https://mail.google.com/mail/u/0/?view=cm&fs=1&to=email@domain.com&tf=1'
+						href='https://mail.google.com/mail/u/0/?view=cm&fs=1&to=tim.melcherson@gmail.com&tf=1'
 						className='contact-icon'
 						src='icons/gmail.svg'>
 						<img
