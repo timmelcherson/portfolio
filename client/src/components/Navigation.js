@@ -29,8 +29,6 @@ class Navigation extends Component {
 		}
 		let menu = document.getElementById('nav-link-container');
 		let arrow = document.getElementById('menu-down-arrow');
-		console.log('id clicked: ' + id);
-		console.log(this.state.activeLink);
 
 		if (this.state.menuExpanded) {
 			menu.style.height = '0px';
@@ -74,17 +72,22 @@ class Navigation extends Component {
 					projectSidepanel.style.opacity = '0';
 					projectImageContainer.style.opacity = '0';
 				}
-				setTimeout(() => {
+				if (window.matchMedia('(max-width: 1024px)').matches) {
 					for (i = 0; i < cornerLines.length; i++) {
-						cornerLines[i].style.margin = '8vh 8vw';
+						cornerLines[i].style.margin = '8.33vh 0';
 					}
-				}, 200);
+				}
+				else if (window.matchMedia('(min-width: 1024px)').matches) {
+					for (i = 0; i < cornerLines.length; i++) {
+						cornerLines[i].style.margin = '0';
+					}
+				}
 
 				setTimeout(() => {
 					for (i = 0; i < cornerLines.length; i++) {
 						cornerLines[i].classList.remove('extend-corner-lines');
 					}
-				}, 200);
+				}, 100);
 				setTimeout(() => {
 					this.navCallback(id);
 				}, 400);
@@ -93,19 +96,21 @@ class Navigation extends Component {
 			case 'nav-link-projects':
 				if (window.matchMedia('(max-width: 600px)').matches) {
 					for (i = 0; i < cornerLines.length; i++) {
-						cornerLines[i].style.margin = '25vh 10vw';
+						cornerLines[i].style.margin = `${2*8.33}vh 0`;
 					}
-				} 
+				}
 				else if (window.matchMedia('(min-width: 601px) and (max-width: 1024px)').matches) {
 					for (i = 0; i < cornerLines.length; i++) {
-						cornerLines[i].style.margin = '25vh 10vw';
+						cornerLines[i].style.margin = `${2*8.33}vh 8.33%`;
 					}
 				}
 				else if (window.matchMedia('(min-width: 1024px)').matches) {
 					for (i = 0; i < cornerLines.length; i++) {
-						cornerLines[i].style.margin = '10vh 15vw';
+						cornerLines[i].style.margin = `8.33vh 8.33%`;
 					}
 				}
+				
+
 				setTimeout(() => {
 					for (i = 0; i < cornerLines.length; i++) {
 						cornerLines[i].classList.add('extend-corner-lines');

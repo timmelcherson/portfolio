@@ -1,7 +1,7 @@
 #app-main-container {
-    display: grid;
-    grid-template-columns: repeat(12, 8.33%);
-    grid-template-rows: repeat(12, 8.33%);
+	display: grid;
+	grid-template-columns: repeat(12, 8.33%);
+	grid-template-rows: repeat(12, 8.33%);
 	width: 100%;
 	height: 100vh;
 	color: white;
@@ -9,33 +9,41 @@
 }
 
 .corner-lines {
-	position: relative;
-	transition: all 0.5s;
+	position: absolute;
+	transition: all 0.5s ease-in-out;
+	width: 8.33%;
+	height: 8.33%;
 }
 
 .extend-corner-lines {
-	width: 45vw;
-	height: 45vh;
+	width: 45%;
+	height: 45%;
 }
 
 #top-left-lines {
-    grid-column-start: 2;
-    grid-row-start: 2;
+	/* grid-column-start: 2;
+	grid-row-start: 2; */
+	top: 8.33%;
+	left: 8.33%;
+	transition: all 0.5s ease-in-out;
 }
 
 #top-right-lines {
-	grid-column-start: 11;
-    grid-row-start: 2;
+	top: 8.33%;
+	right: 8.33%;
+	transition: all 0.5s ease-in-out;
 }
 #bottom-left-lines {
 	/* transform: rotate(180deg); */
-	grid-column-start: 2;
-    grid-row-start: 11;
+	bottom: 8.33%;
+	left: 8.33%;
+	transition: all 0.5s ease-in-out;
 }
 #bottom-right-lines {
 	/* transform: rotate(180deg); */
-	grid-column-start: 11;
-    grid-row-start: 11;
+	bottom: 8.33%;
+	right: 8.33%;
+	transition: all 0.5s ease-in-out;
 }
 
 .corner-lines::before {
@@ -58,41 +66,71 @@
 	z-index: 4;
 }
 
-#top-left-lines::before,
 #top-right-lines::before {
-	top: 1vh;
+	right: -1vw;
+	top: 0;
 }
-#top-left-lines::after,
+#top-right-lines::after {
+	right: 0;
+	top: -1vh;
+}
+#top-left-lines::before {
+	left: -1vw;
+	top: 0;
+}
+#top-left-lines::after {
+	top: -1vh;
+	left: 0;
+}
+#bottom-left-lines::before {
+	left: -1vw;
+	bottom: 0;
+}
 #bottom-left-lines::after {
-	left: 1vw;
+	left: 0;
+	bottom: -1vh;
 }
-
-#top-right-lines::after,
 #bottom-right-lines::after {
-	right: 1vw;
+	right: 0;
+	bottom: -1vh;
 }
-
-#bottom-left-lines::before,
 #bottom-right-lines::before {
-	bottom: 1vh;
+	bottom: 0;
+	right: -1vw;
 }
 
 *::selection {
-    color: #000;
-    background: #FFF;
+	color: #000;
+	background: #fff;
 }
 
 *::-moz-selection {
-    color: #000;
-    background: #FFF;
+	color: #000;
+	background: #fff;
 }
 
 @media only screen and (max-width: 600px) {
 	#app-main-container {
-	  font-size: 8px;
+		font-size: 8px;
 	}
 
 	.corner-lines {
-		width: 10vw;
+		width: 16.66%;
+		margin: 8.33vh 0;
+	}
+}
+
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+	#app-main-container {
+		font-size: 12px;
+	}
+
+	.extend-corner-lines {
+		height: 52vh;
+	}
+
+	.corner-lines {
+		width: 16.66%;
+		margin: 8.33vh 0;
 	}
 }

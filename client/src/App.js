@@ -23,7 +23,6 @@ class App extends Component {
 	navCallback = clickedLinkId => {
 		switch (clickedLinkId) {
 			case 'nav-link-home':
-				console.log('case 1');
 				this.setState({
 					shouldHomeRender: true,
 					shouldProjectsDashboardRender: false
@@ -31,7 +30,6 @@ class App extends Component {
 				break;
 
 			case 'nav-link-projects':
-				console.log('case 2');
 				this.setState({
 					shouldHomeRender: false,
 					shouldProjectsDashboardRender: true

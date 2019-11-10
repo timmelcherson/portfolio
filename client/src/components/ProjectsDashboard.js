@@ -3,13 +3,14 @@ import Fade from 'react-reveal/Fade';
 // import PropTypes from 'prop-types';
 
 import './ProjectsDashboard.css';
+import './Animations.css';
 
 class ProjectsDashboard extends Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			showOverlay: true,
+			showOverlay: false,
 			projectUrl: '',
 			projectUrlText: '',
 			projectDescription: '',
@@ -73,7 +74,7 @@ class ProjectsDashboard extends Component {
 
 		image.style.transform = 'scale(1)';
 		this.setState({
-			showOverlay: true
+			showOverlay: false
 		});
     };
     
@@ -180,7 +181,8 @@ class ProjectsDashboard extends Component {
 							id='project-image-container'
 							onMouseEnter={this.onProjectImageEnter}
 							onMouseLeave={this.onProjectImageLeave}
-							onWheel={this.projectWheelScroll}>
+							onWheel={this.projectWheelScroll}
+                            >
 							<Fade
 								duration={300}
 								opposite
@@ -192,13 +194,13 @@ class ProjectsDashboard extends Component {
 										{projectUrlText}
 									</a>
 								</div>
-								<div id='project-overlay-scroll-down-container'>
+							</Fade>
+                            <div id='project-overlay-scroll-down-container'>
 									<div id='project-overlay-mouse'>
 										<div id='project-overlay-scrollwheel' />
 									</div>
-									<i id='project-overlay-down-arrow' />
+									<i id='project-overlay-scroll-down-arrow' />
 								</div>
-							</Fade>
 							<img id='project-image' src={projectImg} alt='' />
 						</div>
 					</div>
