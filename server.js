@@ -26,14 +26,12 @@ app.get('*', (req, res) => {
 	res.sendFile(path.resolve(__dirname, 'client', 'public', 'index.html'));
 });
 
-let db;
-
 // Serve static assets if in production (This is for Heroku deployment)
 if (process.env.NODE_ENV === 'production') {
 	// DB Config
 	// Atlas URI
-	db = process.env.DB_CONFIG_KEY;
-	console.log(db);
+	const db = process.env.DB_CONFIG_KEY;
+
 	// Set static folder
 	app.use(express.static('client/build'));
 
@@ -41,23 +39,33 @@ if (process.env.NODE_ENV === 'production') {
 	app.get('*', (req, res) => {
 		res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
 	});
+
+	// Connect to Mongo
+	mongoose
+		.connect(db, {
+			useNewUrlParser: true,
+			useUnifiedTopology: true,
+			useCreateIndex: true
+		})
+		.then(() => console.log('MongoDB Connected'))
+		.catch(err => console.log(err));
+	mongoose.set('useFindAndModify', false);
 } else {
 	// DB Config
 	// Atlas URI
-	db = require('./config/keys').mongoURIAtlas;
+	const db = require('./config/keys').mongoURIAtlas;
+
+	// Connect to Mongo
+	mongoose
+		.connect(db, {
+			useNewUrlParser: true,
+			useUnifiedTopology: true,
+			useCreateIndex: true
+		})
+		.then(() => console.log('MongoDB Connected'))
+		.catch(err => console.log(err));
+	mongoose.set('useFindAndModify', false);
 }
-
-// Connect to Mongo
-mongoose
-	.connect(db, {
-		useNewUrlParser: true,
-		useUnifiedTopology: true,
-		useCreateIndex: true
-	})
-	.then(() => console.log('MongoDB Connected'))
-	.catch(err => console.log(err));
-
-// mongoose.set('useFindAndModify', false);
 
 // Define a PORT variable, process.env.PORT is for Heroku deployment
 const PORT = process.env.PORT || 5000;
